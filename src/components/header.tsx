@@ -1,22 +1,50 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SignInModal from "./signInModal";
 import Logo from "./logo";
+import { RootState } from "@/GlobalRedux/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setUser } from "@/GlobalRedux/Features/user/userSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const user = useSelector((state: RootState) => state.user);
   const [openLogin, setOpenLogin] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const storedToken = localStorage.getItem("token");
+    const storedUsername = localStorage.getItem("username");
+    const storedPhoto = localStorage.getItem("photo");
+    const storedEmail = localStorage.getItem("email");
+
+    dispatch(
+      setUser({
+        token: storedToken,
+        email: storedEmail,
+        username: storedUsername,
+        photo: storedPhoto,
+      })
+    );
+    setMounted(true);
+  }, [dispatch]);
+
+  if (!mounted) {
+    return null; // avoid hydration errors until client data is loaded
+  }
+
   return (
-    <div className=" text-white p-4 bg-neutral-900 flex justify-between px-8">
+    <div className="text-white p-4 bg-neutral-900 flex justify-between px-8">
       <Logo />
-      {localStorage.getItem("token") ? (
-        <div className="flex  items-center gap-2">
-          <p>{localStorage.getItem("username")}</p>{" "}
+      {user.token ? (
+        <div className="flex items-center gap-2">
+          <p>{user.username}</p>
           <img
-            src={`${
-              localStorage.getItem("photo")
-                ? localStorage.getItem("photo")
+            src={
+              user.photo
+                ? user.photo
                 : "https://images.pexels.com/photos/14653174/pexels-photo-14653174.jpeg"
-            }`}
+            }
             alt=""
             className="rounded-full w-12 h-12 object-cover"
           />
