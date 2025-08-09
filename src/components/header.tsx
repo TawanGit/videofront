@@ -6,13 +6,14 @@ import { RootState } from "@/GlobalRedux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "@/GlobalRedux/Features/user/userSlice";
 import { FaPlus } from "react-icons/fa";
+import UploadModal from "./uploadModal";
 
 export default function Header() {
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user);
   const [openLogin, setOpenLogin] = useState(false);
   const [mounted, setMounted] = useState(false);
-
+  const [modal, setOpenModal] = useState(false);
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
     const storedUsername = localStorage.getItem("username");
@@ -41,7 +42,7 @@ export default function Header() {
         <div className="flex items-center gap-4">
           <div
             className="bg-neutral-800 p-2 px-6 rounded-2xl flex items-center gap-4 cursor-pointer hover:bg-neutral-700"
-            onClick={}
+            onClick={() => setOpenModal(true)}
           >
             <p>Enviar vídeos</p>
             <FaPlus />
@@ -63,6 +64,8 @@ export default function Header() {
           <button>Sign Up</button>
         </div>
       )}
+
+      <UploadModal open={modal} onClose={() => setOpenModal(false)} />
     </div>
   );
 }
