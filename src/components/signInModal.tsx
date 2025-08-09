@@ -13,20 +13,34 @@ export default function SignInModal({ open, onClose }: modal) {
     username: "",
     password: "",
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   async function loginHandle() {
-    const response = await fetch("http://localhost:3001/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    setError("");
+    setLoading(true);
+    try {
+      const response = await fetch("http://localhost:3001/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
 
-      body: JSON.stringify({
-        username: login.username,
-        password: login.password,
-      }),
-    });
-    const data = await response.json();
-    console.log(data);
+        body: JSON.stringify({
+          username: login.username,
+          password: login.password,
+        }),
+      });
+      const data = await response.json();
+      if (data.access_token) {
+        localStorage.setItem("token", data.access_token);
+        window.location.reload();
+      } else {
+        setError(data.message);
+        setLoading(false);
+      }
+    } catch {
+      setLoading(false);
+    }
   }
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
@@ -58,11 +72,12 @@ export default function SignInModal({ open, onClose }: modal) {
           placeholder="Password"
           className="p-3 rounded bg-gray-700 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
+        <div> {error && error}</div>
         <button
           onClick={loginHandle}
           className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
         >
-          Login
+          {loading ? "carregando" : "login"}
         </button>
       </div>
     </div>
