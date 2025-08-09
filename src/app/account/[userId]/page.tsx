@@ -5,7 +5,8 @@ interface Props {
 }
 
 export default async function Page({ params }: Props) {
-  const { userId } = params;
+  const awaitedParams = await params;
+  const { userId } = awaitedParams;
   const res = await fetch(`http://localhost:3001/users/subscribers/${userId}`, {
     method: "GET",
   });
