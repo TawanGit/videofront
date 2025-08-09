@@ -1,6 +1,7 @@
 "use Client";
 
 import { MouseEventHandler, useState } from "react";
+import Logo from "./logo";
 
 type modal = {
   open: boolean;
@@ -44,16 +45,14 @@ export default function SignInModal({ open, onClose }: modal) {
   }
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="flex flex-col bg-slate-950 rounded-2xl p-8 w-full max-w-xl space-y-4 shadow-xl">
+      <div className="flex flex-col bg-neutral-900 rounded-2xl p-8 w-full max-w-xl space-y-4 shadow-xl">
         <button
-          className="self-end text-white hover:text-red-400 font-bold text-xl"
+          className="self-end text-white hover:brightness-80 font-bold text-xl"
           onClick={onClose}
         >
           &times;
         </button>
-        <h2 className="text-white text-2xl font-semibold text-center">
-          Login in Video Platform
-        </h2>
+        <Logo />
         <input
           value={login.username}
           onChange={(event) =>
@@ -61,7 +60,7 @@ export default function SignInModal({ open, onClose }: modal) {
           }
           type="text"
           placeholder="Username"
-          className="p-3 rounded bg-gray-700 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
           value={login.password}
@@ -70,14 +69,19 @@ export default function SignInModal({ open, onClose }: modal) {
           }
           type="password"
           placeholder="Password"
-          className="p-3 rounded bg-gray-700 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
+          className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
         <div> {error && error}</div>
         <button
           onClick={loginHandle}
-          className="bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+          disabled={login.password.length === 0 || login.username.length === 0}
+          className={` text-white py-2 rounded font-semibold   transition bg-yellow-700 hover:cursor-pointer hover:bg-yellow-400  ${
+            login.password.length === 0 || login.username.length === 0
+              ? "opacity-50 cursor-not-allowed"
+              : "hover:bg-yellow-800"
+          }`}
         >
-          {loading ? "carregando" : "login"}
+          {loading ? "carregando.." : "Entrar"}
         </button>
       </div>
     </div>

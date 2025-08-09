@@ -1,12 +1,13 @@
 "use client";
 import { useState } from "react";
 import SignInModal from "./signInModal";
+import Logo from "./logo";
 
 export default function Header() {
   const [openLogin, setOpenLogin] = useState(false);
   return (
     <div className=" text-white p-4 bg-neutral-900 flex justify-between px-8">
-      <p>Video Platform</p>
+      <Logo />
       <div className="flex items-center gap-4">
         <button onClick={() => setOpenLogin(true)}>Log In</button>
         <SignInModal open={openLogin} onClose={() => setOpenLogin(false)} />
