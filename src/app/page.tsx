@@ -1,3 +1,4 @@
+import VideoPreview from "@/components/videoPreview";
 import Image from "next/image";
 
 interface videoData {
@@ -23,9 +24,7 @@ export default async function Home() {
       {videos.map((video: videoData, index: number) => (
         <div key={index}>
           <div className="flex flex-col w-md h-md">
-            <video controls className=" rounded-lg     ">
-              <source src={video.url} />
-            </video>
+            <VideoPreview video={video} user={video.user} />
             <div className="flex gap-4 mt-2">
               <div>
                 <img
