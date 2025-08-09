@@ -10,9 +10,13 @@ export default function Header() {
       <Logo />
       {localStorage.getItem("token") ? (
         <div className="flex  items-center gap-2">
-          <p>Name</p>{" "}
+          <p>{localStorage.getItem("username")}</p>{" "}
           <img
-            src="https://media1.thrillophilia.com/filestore/n2ib9inwzcilxpg3aumbigvq4jus_IMG_World_Dubai_Fun_38a0986c1a.jpg?w=400&dpr=2"
+            src={`${
+              localStorage.getItem("photo")
+                ? localStorage.getItem("photo")
+                : "https://images.pexels.com/photos/14653174/pexels-photo-14653174.jpeg"
+            }`}
             alt=""
             className="rounded-full w-12 h-12 object-cover"
           />
