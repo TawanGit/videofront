@@ -38,7 +38,6 @@ export default function Header() {
       <Logo />
       {user.token ? (
         <div className="flex items-center gap-2">
-          <p>{user.username}</p>
           <img
             src={
               user.photo
