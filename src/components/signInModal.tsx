@@ -59,7 +59,7 @@ export default function SignInModal({ open, onClose }: modal) {
             setLogin((prev) => ({ ...prev, username: event.target.value }))
           }
           type="text"
-          placeholder="Username"
+          placeholder="Usuário"
           className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
         <input
@@ -68,7 +68,7 @@ export default function SignInModal({ open, onClose }: modal) {
             setLogin((prev) => ({ ...prev, password: event.target.value }))
           }
           type="password"
-          placeholder="Password"
+          placeholder="Senha"
           className="p-2 rounded bg-neutral-900 border border-neutral-800 text-white placeholder-gray-400 outline-none focus:ring-2 focus:ring-blue-500"
         />
         <div> {error && error}</div>
