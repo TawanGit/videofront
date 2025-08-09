@@ -37,7 +37,7 @@ export default function Header() {
   }
 
   return (
-    <div className="text-white p-4 bg-neutral-900 flex justify-between px-8">
+    <div className="text-white p-2 bg-zinc-950 flex justify-between px-8">
       <Logo />
       {user.token ? (
         <div className="flex items-center gap-4">

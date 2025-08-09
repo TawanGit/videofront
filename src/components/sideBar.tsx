@@ -10,7 +10,7 @@ export default function SideBar() {
   const pathName = usePathname();
   const user = useSelector((state: RootState) => state.user);
   return (
-    <nav className="hidden lg:flex flex-col gap-2 w-64 h-screen text-white bg-neutral-900 overflow-auto px-4 py-6">
+    <nav className="hidden lg:flex flex-col gap-2 w-64 h-screen text-white bg-zinc-950 overflow-auto px-4 py-6">
       <div className="mb-4">
         <Link
           href={"/"}
