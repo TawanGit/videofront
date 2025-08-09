@@ -37,6 +37,7 @@ export default function SignInModal({ open, onClose }: modal) {
         localStorage.setItem("username", data.userData.username);
         localStorage.setItem("photo", data.userData.photo);
         localStorage.setItem("email", data.userData.email);
+        localStorage.setItem("id", data.userData.id);
         window.location.reload();
       } else {
         setError(data.message);

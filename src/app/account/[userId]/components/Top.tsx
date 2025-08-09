@@ -2,7 +2,10 @@
 import { RootState } from "@/GlobalRedux/store";
 import { useSelector } from "react-redux";
 
-export default function Top() {
+interface Props {
+  subscribers: Array<number>;
+}
+export default function Top({ subscribers }: Props) {
   const user = useSelector((state: RootState) => state.user);
   return (
     <div className="px-12 py-12">
@@ -14,7 +17,7 @@ export default function Top() {
         />
         <div className="flex flex-col">
           <p className="text-2xl text-white">{user.username}</p>
-          <p className="text-gray-200">0 inscritos . 1 video</p>
+          <p className="text-gray-200">{subscribers} inscritos . 1 video</p>
           <p className="text-gray-200">Description</p>
         </div>
       </div>

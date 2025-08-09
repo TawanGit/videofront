@@ -19,9 +19,10 @@ export default function Header() {
     const storedUsername = localStorage.getItem("username");
     const storedPhoto = localStorage.getItem("photo");
     const storedEmail = localStorage.getItem("email");
-
+    const storedUserId = localStorage.getItem("id");
     dispatch(
       setUser({
+        id: storedUserId,
         token: storedToken,
         email: storedEmail,
         username: storedUsername,
