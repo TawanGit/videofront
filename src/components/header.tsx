@@ -44,7 +44,7 @@ export default function Header() {
             className="bg-neutral-800 p-2 px-6 rounded-2xl flex items-center gap-4 cursor-pointer hover:bg-neutral-700"
             onClick={() => setOpenModal(true)}
           >
-            <p>Enviar vídeos</p>
+            <p className="hidden lg:block">Enviar vídeos</p>
             <FaPlus />
           </div>
           <img
