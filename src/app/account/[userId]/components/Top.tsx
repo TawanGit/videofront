@@ -36,7 +36,8 @@ export default function Top({ user }: Props) {
         <div className="flex flex-col">
           <p className="text-2xl text-white">{user.username}</p>
           <p className="text-gray-200">
-            {user.subscribers.length} inscritos . 1 video
+            {user.subscribers.length} inscritos . {user.videos.length}{" "}
+            {user.videos.length > 1 ? "vídeos" : "video"}
           </p>
           {changeDescription ? (
             <div>
