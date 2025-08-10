@@ -4,7 +4,7 @@ import VideoPreview from "@/components/videoPreview";
 import VideosUser from "./components/VideosUser";
 
 interface Props {
-  params: { userId: string };
+  params: Promise<{ userId: string }>;
 }
 
 export interface User {
@@ -13,7 +13,9 @@ export interface User {
   description: string;
   subscribers: Array<Object>;
   photo: string;
-  videos: [{ title: string; description: string; url: string }];
+  videos: [
+    { title: string; description: string; url: string; createdAt: string }
+  ];
 }
 export default async function Page({ params }: Props) {
   const awaitedParams = await params;

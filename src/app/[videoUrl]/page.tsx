@@ -3,12 +3,12 @@ import UserAndSubscribe from "./components/UserAndSubscribe";
 import Video from "./components/Video";
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     url: string;
     username: string;
     title: string;
     photo: string;
-  };
+  }>;
 }
 
 export default async function Page({ searchParams }: Props) {
