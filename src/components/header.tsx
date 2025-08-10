@@ -37,7 +37,13 @@ export default function Header() {
   }
 
   return (
-    <div className="text-white p-2 bg-zinc-950 flex justify-between px-8">
+    <div
+      style={{
+        boxShadow: "0 2px 4px rgba(255, 255, 255, 0.15)",
+        WebkitBoxShadow: "0 2px 8px rgba(255, 255, 230, 0.15)",
+      }}
+      className="text-white p-2  drop-shadow-lg bg-zinc-950 shadow flex justify-between px-8"
+    >
       <Logo />
       {user.token ? (
         <div className="flex items-center gap-4">
