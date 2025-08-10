@@ -1,5 +1,6 @@
 "use client";
 import { RootState } from "@/GlobalRedux/store";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 interface Props {
@@ -7,6 +8,7 @@ interface Props {
 }
 export default function Top({ subscribers }: Props) {
   const user = useSelector((state: RootState) => state.user);
+  const [description, setDescrition] = useState("");
   return (
     <div className="px-12 py-12">
       <div className="flex items-center gap-4">
