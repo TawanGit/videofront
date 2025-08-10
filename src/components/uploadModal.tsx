@@ -14,7 +14,7 @@ export default function UploadModal({ open, onClose }: modal) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 ">
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <div className="flex flex-col bg-neutral-900 rounded-2xl p-8 w-full max-w-xl space-y-4 pb-12 shadow-xl">
         <div className="flex items-center justify-between text-2xl border-b border-neutral-700">
           <p>Enviar vídeos</p>
