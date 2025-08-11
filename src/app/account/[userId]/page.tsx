@@ -1,6 +1,4 @@
-import Video from "@/app/[videoUrl]/components/Video";
 import Top from "./components/Top";
-import VideoPreview from "@/components/videoPreview";
 import VideosUser from "./components/VideosUser";
 
 interface Props {

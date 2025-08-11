@@ -22,7 +22,9 @@ export default function VideoPreview({ video, user }: Props) {
     <Link
       href={`/${username}?url=${encodeURIComponent(
         video.url
-      )}&username=${username}&title=${video.title}&photo=${user.photo}`}
+      )}&username=${username}&title=${video.title}&photo=${
+        user.photo
+      }&videoid=${video.id}`}
     >
       <video
         preload="metadata"

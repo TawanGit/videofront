@@ -4,6 +4,7 @@ import Video from "./components/Video";
 
 interface Props {
   searchParams: Promise<{
+    id: string;
     url: string;
     username: string;
     title: string;
@@ -12,7 +13,7 @@ interface Props {
 }
 
 export default async function Page({ searchParams }: Props) {
-  const { url, username, title, photo } = await searchParams;
+  const { id, url, username, title, photo } = await searchParams;
 
   const decodedUrl = url ? decodeURIComponent(url) : null;
 
@@ -28,7 +29,7 @@ export default async function Page({ searchParams }: Props) {
           <UserAndSubscribe photo={photo} username={username} title={title} />
         </div>
 
-        <Comments />
+        <Comments videoId={id} />
       </div>
     </div>
   );
