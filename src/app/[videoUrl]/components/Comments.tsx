@@ -20,13 +20,13 @@ async function Comments({ videoId }: Props) {
   const comments: Comment[] = await res.json();
   console.log(comments);
   return (
-    <div className="md:w-1/4 border-l border-neutral-700 min-h-max ">
+    <div className="md:w-1/4 border-l border-neutral-700 min-h-max  ">
       <p className="text-center p-2 border-b border-neutral-700">Comentários</p>
 
       <div className="p-2 space-y-2">
         {comments.length > 0 ? (
           comments.map((comment, index) => (
-            <div key={index} className="border-b border-neutral-700 pb-2">
+            <div key={index}>
               <div className="flex items-center gap-4">
                 <img
                   src={comment.user.photo}
@@ -34,12 +34,12 @@ async function Comments({ videoId }: Props) {
                 />
                 <p className="text-sm text-gray-300">{comment.text}</p>
               </div>
-              <CommentInput />
             </div>
           ))
         ) : (
           <p className="text-gray-500 text-sm">Sem comentários.</p>
         )}
+        <CommentInput videoId={videoId} />
       </div>
     </div>
   );
